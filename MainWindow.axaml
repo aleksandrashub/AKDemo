@@ -1,0 +1,247 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="shubenokAleks1.MainWindow"
+        Title="shubenokAleks1">
+	<ScrollViewer>
+	<Grid
+	 ColumnDefinitions="*, *, *"
+	 RowDefinitions="200,*">
+		<StackPanel
+		  Grid.Row="0"
+		  Grid.Column="0"
+		>
+			<Button
+			  Width="150"
+			  Content="Добавить агента"
+			  Click="Add_Click">
+			</Button>
+			<ComboBox
+				SelectionChanged="ComboBox_SelectionChanged_1"
+				Name="typesCmb">
+				<ComboBoxItem>
+					Первый тип
+				</ComboBoxItem>
+				<ComboBoxItem>
+				Второй тип
+			</ComboBoxItem>
+			<ComboBoxItem>
+				Третий тип
+			</ComboBoxItem>
+				<ComboBoxItem>
+					Все типы
+				</ComboBoxItem>
+		</ComboBox>
+		</StackPanel>
+		<StackPanel
+			
+			Orientation="Vertical"
+		  Grid.Row="0"
+			HorizontalAlignment="Left"
+		  Grid.Column="1">
+			<TextBlock
+				Text="Поисковая строка">
+				</TextBlock>
+			<TextBox
+				Name="search"
+				KeyUp="TextBox_KeyUp"
+				Width="250"
+				Height="30">
+				</TextBox>
+			</StackPanel>
+		<StackPanel
+			Orientation="Vertical"
+		  Grid.Row="0"
+			HorizontalAlignment="Left"
+		  Grid.Column="2">	
+			<ComboBox
+				SelectionChanged="ComboBox_SelectionChanged_2"
+				Name="sortsCmb">
+				<ComboBoxItem>
+					Наименование А-Я
+					</ComboBoxItem>
+				<ComboBoxItem>
+					Наименование Я-А
+				</ComboBoxItem>
+				<ComboBoxItem>
+					Размер скидки по возрастанию
+				</ComboBoxItem>
+				<ComboBoxItem>
+					Размер скидки по убыванию
+				</ComboBoxItem>
+				<ComboBoxItem>
+					Приоритет по возрастанию
+				</ComboBoxItem>
+				<ComboBoxItem>
+					Приоритет по убыванию
+				</ComboBoxItem>
+				
+				</ComboBox>
+			
+			</StackPanel>
+		<StackPanel
+			Grid.Row="1"
+			Grid.Column="0"
+			Grid.ColumnSpan="3">
+			<ListBox
+				SelectionChanged="ListBox_SelectionChanged"
+				Background="AliceBlue"
+				Name="agentsList">
+				<ListBox.ItemTemplate>
+					<DataTemplate
+					   x:CompileBindings="False">
+						<Grid
+							ColumnDefinitions="100, 500, 100">
+							<StackPanel
+								Grid.Column="0">
+								<Image
+									Height="100"
+									Width="100"
+									Name="imgAg">
+								</Image>
+							</StackPanel>
+							<StackPanel
+								Orientation="Vertical"
+								Grid.Column="1">
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text="id ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding id}"
+										Name="idComp">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+									Orientation="Horizontal">
+									<TextBlock
+										Text="Наименование ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding namecomp}"
+										Name="namecompAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								   Orientation="Horizontal">
+									<TextBlock
+										Text="Количество продаж ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding amount}"
+										Name="amountAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								  Orientation="Horizontal">
+									<TextBlock
+										Text="Размер скидки">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding disc}"
+										Name="discAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								  Orientation="Horizontal">
+									<TextBlock
+										Text="Тип агента ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding type}"
+										Name="typeAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								  Orientation="Horizontal">
+									<TextBlock
+										Text="Приоритет агента ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding prior}"
+										Name="priorAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								  Orientation="Horizontal">
+									<TextBlock
+										Text="ФИО директора компании ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding fioDir}"
+										Name="fioDirAg">
+									</TextBlock>
+								</StackPanel>
+
+								<StackPanel
+								 Orientation="Horizontal">
+									<TextBlock
+										Text="ИНН ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding INN}"
+										Name="innAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								 Orientation="Horizontal">
+									<TextBlock
+										Text="КПП ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding Kpp}"
+										Name="kppAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								 Orientation="Horizontal">
+									<TextBlock
+										Text="Телефон ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding phone}"
+										Name="phoneAg">
+									</TextBlock>
+								</StackPanel>
+								<StackPanel
+								 Orientation="Horizontal">
+									<TextBlock
+										Text="Mail ">
+									</TextBlock>
+									<TextBlock
+										Text="{Binding mail}"
+										Name="mailAg">
+									</TextBlock>
+								</StackPanel>
+
+
+
+							</StackPanel>
+							<StackPanel
+								Grid.Column="2">
+								<Button
+									Tag="{Binding id}"
+									Click="Delete_Click"
+									Content="Удалить">
+								</Button>
+								<Button
+									Width="180"
+									Name="btnPr"
+									Tag="{Binding id}"
+									Click="prodazhi_Click"
+									Content="Просмотреть продажи">
+								</Button>
+							</StackPanel>
+
+						</Grid>
+
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</StackPanel>
+	</Grid>
+		</ScrollViewer>
+</Window>
